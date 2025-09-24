@@ -1,0 +1,31 @@
+{
+  "name": "cad-wasm-next",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+  "build:wasm": "emcc ./wasm/solver.c ./wasm/libslvs.a -L./wasm -lslvs -o public/scene/wasm/solver.js -s MODULARIZE=1 -s 'EXPORT_NAME=\"createSolverModule\"' -s EXPORTED_FUNCTIONS='[\"_main\",\"_solver\",\"_free\"]' -s ALLOW_MEMORY_GROWTH=1 -s TOTAL_MEMORY=134217728 -O3",
+    "build": "next build --turbopack",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "next": "15.5.0",
+    "three": "^0.160.0",
+    "react-icons": "^4.12.0"
+  },
+  "devDependencies": {
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/three": "^0.160.0",
+    "@tailwindcss/postcss": "^4",
+    "tailwindcss": "^4",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.0",
+    "@eslint/eslintrc": "^3"
+  }
+}
